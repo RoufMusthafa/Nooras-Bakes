@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakery ERP — Daily Wholesale Orders</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--ink:#17212f;--muted:#687586;--line:#dfe5eb;--accent:#185adb;--accent-dark:#1248b4;--green:#147d52;--green-bg:#e8f7ef;--amber:#966000;--amber-bg:#fff4d6;--shadow:0 8px 26px rgba(20,35,55,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1600px;margin:auto;padding:22px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:13px;background:#172b4d;color:white;display:grid;place-items:center;font-size:23px}.brand h1{font-size:22px;margin:0;letter-spacing:-.5px}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:10px 13px;font-weight:650}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.primary:hover{background:var(--accent-dark)}.btn.soft{background:#eef3ff;color:#1746a2;border-color:#dbe5ff}.btn:disabled{opacity:.45;cursor:not-allowed}.notice{padding:11px 13px;background:#fff8e7;border:1px solid #f3dfab;border-radius:10px;color:#75510b;margin-bottom:16px;font-size:12px}.toolbar{display:flex;align-items:end;gap:12px;flex-wrap:wrap;background:var(--panel);padding:15px;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);margin-bottom:15px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:11px;font-weight:750;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.field input,.field select,.search{border:1px solid var(--line);background:white;border-radius:8px;padding:10px 11px;color:var(--ink);min-height:39px}.field input:focus,.field select:focus,.search:focus{outline:2px solid #c6d7ff;border-color:var(--accent)}.searchwrap{flex:1;min-width:220px}.search{width:100%}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:15px}.stat{background:white;border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:var(--shadow)}.stat .label{color:var(--muted);font-size:12px}.stat .value{font-size:25px;font-weight:780;letter-spacing:-.7px;margin-top:4px}.stat .sub{font-size:11px;color:var(--muted);margin-top:2px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 10px}.sectionhead h2{font-size:16px;margin:0}.sectionhead p{margin:3px 0 0;color:var(--muted);font-size:12px}.tabs{display:flex;gap:6px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:white;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:650}.tab.active{background:#eaf0ff;border-color:#bfd0ff;color:#1746a2}.panel{background:white;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.grid-wrap{overflow:auto;max-height:calc(100vh - 365px);min-height:260px}.grid{border-collapse:separate;border-spacing:0;white-space:nowrap;width:max-content;min-width:100%;font-size:12px}.grid th,.grid td{border-right:1px solid #e4e9ef;border-bottom:1px solid #e4e9ef;padding:0;text-align:center;min-width:72px}.grid th{position:sticky;top:0;z-index:3;background:#1c2939;color:#fff;height:60px;font-weight:700;max-width:90px;white-space:normal;line-height:1.15}.grid th:first-child{left:0;z-index:5;min-width:220px;text-align:left;padding:10px;background:#26374e}.grid td:first-child{position:sticky;left:0;z-index:2;text-align:left;background:#fff;min-width:220px;padding:8px 10px;font-weight:700}.grid tr:nth-child(even) td{background:#fafbfd}.grid tr:nth-child(even) td:first-child{background:#f5f7fa}.grid td input.qty{width:100%;min-width:65px;height:38px;border:0;text-align:center;background:transparent;color:var(--ink);font-weight:650;outline:none}.grid td input.qty:focus{background:#eaf1ff;box-shadow:inset 0 0 0 2px #4c7cf0}.grid td input.qty::-webkit-inner-spin-button{opacity:1}.grid .total-row td{position:sticky;bottom:0;z-index:4;background:#eaf0f7!important;font-weight:800;height:42px}.grid .total-row td:first-child{z-index:5;background:#dce5f0!important}.grid .verify-cell{min-width:76px}.verify-btn{border:0;background:transparent;color:#8b98a8;padding:7px;border-radius:7px}.verify-btn.checked{color:var(--green);background:var(--green-bg)}.custname{display:flex;align-items:center;gap:8px}.custnum{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:6px;background:#edf1f5;color:#5c6878;font-size:10px}.customer-state{font-size:10px;font-weight:700;color:var(--muted);margin-left:auto}.customer-state.changed{color:var(--amber)}.grid-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:11px 13px;color:var(--muted);font-size:11px}.mobile-list{display:none}.customer-card{border:1px solid var(--line);border-radius:12px;background:white;margin-bottom:10px;overflow:hidden}.customer-card-head{display:flex;align-items:center;gap:10px;padding:13px}.customer-card-head .name{font-weight:750;flex:1}.customer-card-body{padding:0 12px 12px}.category{border:1px solid var(--line);border-radius:9px;margin:8px 0;overflow:hidden}.category summary{padding:11px;font-weight:750;background:#f7f9fb;cursor:pointer;list-style:none;display:flex;justify-content:space-between}.category summary::-webkit-details-marker{display:none}.product-entry{display:flex;align-items:center;gap:10px;padding:9px 10px;border-top:1px solid #edf0f4}.product-entry .pname{flex:1}.stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden}.stepper button{border:0;background:#f2f5f8;width:34px;height:34px;font-size:18px}.stepper input{width:55px;height:34px;border:0;border-left:1px solid var(--line);border-right:1px solid var(--line);text-align:center;font-weight:750;outline:none}.card-total{font-size:12px;color:var(--muted);padding:8px 2px}.empty{padding:28px;text-align:center;color:var(--muted)}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#17212f;color:#fff;border-radius:10px;padding:11px 16px;box-shadow:var(--shadow);z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}.footer-note{color:var(--muted);font-size:11px;text-align:center;padding:18px 0 4px}
+@media(max-width:900px){.app{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-wrap{max-height:none}.desktop-grid{display:none}.mobile-list{display:block}.sectionhead{align-items:flex-start;flex-direction:column}.toolbar{align-items:stretch}.field{flex:1;min-width:135px}.searchwrap{flex-basis:100%}.stat .value{font-size:22px}}
+@media(max-width:430px){.brand h1{font-size:19px}.app{padding:10px}.toolbar{padding:11px}.stats{gap:8px}.stat{padding:11px}.actions .btn{padding:9px 8px;font-size:12px}.product-entry{gap:6px}.product-entry .pname{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">🥐</div><div><h1>Bakery Operations</h1><p>Wholesale order register · Front-end demo</p></div></div>
+    <div class="actions">
+      <button class="btn" id="addCustomerBtn">＋ Add customer</button>
+      <button class="btn soft" id="resetBtn">Reset demo</button>
+      <button class="btn primary" id="exportBtn">⇩ Download Excel</button>
+    </div>
+  </header>
+  <div class="notice"><strong>Demo mode:</strong> edits are saved in this browser on this device. This is a front-end prototype, not yet connected to Django/PostgreSQL. Download Excel works from desktop and mobile browsers.</div>
+  <section class="toolbar">
+    <div class="field"><label for="deliveryDate">Delivery date</label><input id="deliveryDate" type="date" value="2026-10-29"></div>
+    <div class="field"><label for="statusFilter">Order status</label><select id="statusFilter"><option value="all">All customers</option><option value="unverified">Needs verification</option><option value="verified">Verified</option></select></div>
+    <div class="field searchwrap"><label for="search">Find customer</label><input id="search" class="search" type="search" placeholder="Search customer name..."></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="label">Customers on register</div><div class="value" id="customerCount">45</div><div class="sub">Recurring wholesale customers</div></div>
+    <div class="stat"><div class="label">Total units ordered</div><div class="value" id="unitsTotal">0</div><div class="sub">Across all products</div></div>
+    <div class="stat"><div class="label">Verified orders</div><div class="value" id="verifiedCount">0 / 45</div><div class="sub">Checked by staff</div></div>
+    <div class="stat"><div class="label">Products ordered</div><div class="value" id="activeProducts">0</div><div class="sub">Product variants with quantity</div></div>
+  </section>
+  <div class="sectionhead"><div><h2>Daily order register</h2><p>Enter quantities in the grid. Totals recalculate automatically.</p></div><div class="tabs" id="categoryTabs"></div></div>
+  <section class="panel desktop-grid">
+    <div class="grid-wrap" id="gridMount"></div>
+    <div class="grid-footer"><span>Tip: click a cell and type a quantity. Press Tab to move between cells.</span><span id="saveStatus">All changes saved in this browser</span></div>
+  </section>
+  <section class="mobile-list" id="mobileMount"></section>
+  <div class="footer-note">Excel export includes the daily matrix, customer verification status and product totals. Keep a separate backup before using real business data.</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+const initialCustomers = [
+"MINAR PUMP","THARAVAD RES","ASIAN REST","HELIPAD","MCCL BAKHALA","MUBAI KITCHEN","LULU NEW","NILA REST","NILAMBUR","THARAVAD NEW","FIVE STAR","SPICE RES","CHINMNY RES","GRAND HYPER","OASIS","FARHAN","AVIL MILK","KAPPALAM CLT","JAZ","MAKKANI","FATHIMA RES","MANGLR TASTY","FOODIES","ZAITHOON","THARAVAD BEACH","MALABAR TEA TIME","MUNCHICE CITY FLWR","PARK VIEW","SAFA BAKALA","THARAVAD BOOFIYA","NILA BAKALA","KALPAKA","NESMA BOOFIYA","NESMA CAFETERIA","MEROCCO","SHAMA AL RAZI","THAMIMI CAMP","RINU CAFETERIA","MALABAR THAMIMI","TASTY","UDDUPI","ZAM ZAM","DOSHAAKADA","COFFEE","LIVE CLT"
+];
+const products = [
+{id:"egg",name:"Egg",category:"Puffs"},{id:"chicken",name:"Chicken",category:"Puffs"},{id:"veg",name:"Veg",category:"Puffs"},
+{id:"banana",name:"Banana",category:"Puffs"},{id:"dates",name:"Dates",category:"Puffs"},{id:"mash",name:"Mash",category:"Puffs"},
+{id:"roll",name:"Roll",category:"Other Products"},{id:"shawarma",name:"Shawarma",category:"Other Products"},{id:"coconut",name:"Coconut",category:"Other Products"},
+{id:"cream_bun",name:"Cream Bun",category:"Other Products"},{id:"cutlet",name:"Cutlet",category:"Other Products"},{id:"sweetna",name:"Sweetna",category:"Other Products"},
+{id:"sw",name:"SW",category:"Other Products"},{id:"samosa",name:"Samosa",category:"Other Products"},{id:"parippu",name:"Parippu",category:"Other Products"}
+];
+const demoQuantities = {
+"MINAR PUMP":{egg:10,chicken:5},"THARAVAD RES":{egg:10},"ASIAN REST":{cutlet:5},
+"HELIPAD":{egg:5,chicken:5,shawarma:5,cream_bun:5,samosa:10},
+"MCCL BAKHALA":{egg:5,chicken:5,roll:10,shawarma:5,cream_bun:10,samosa:30},
+"MUBAI KITCHEN":{egg:15,chicken:15},"LULU NEW":{egg:5,banana:5,dates:5,roll:10,shawarma:5,cream_bun:10,samosa:10},
+"NILA REST":{egg:6,roll:6,cutlet:20},"NILAMBUR":{egg:15,chicken:5,veg:5,banana:5,roll:5,shawarma:10,cream_bun:10},
+"THARAVAD NEW":{roll:5,cutlet:5},"SPICE RES":{egg:10,chicken:5,roll:5,shawarma:5,cutlet:10,samosa:10},
+"CHINMNY RES":{egg:4,chicken:3,samosa:5},"GRAND HYPER":{roll:8,shawarma:5,samosa:25},
+"OASIS":{egg:20,chicken:5,shawarma:3,cream_bun:15},"FARHAN":{egg:5,cream_bun:5,cutlet:5},
+"AVIL MILK":{egg:5,banana:5,roll:5,shawarma:5},"KAPPALAM CLT":{egg:15,chicken:10,banana:5,shawarma:6},
+"JAZ":{egg:20,mash:8,cream_bun:10},"MAKKANI":{egg:6,chicken:5,roll:8,shawarma:6,cream_bun:10,sweetna:8},
+"FOODIES":{egg:10,roll:10,cream_bun:10},"ZAITHOON":{egg:8,chicken:5,roll:5},
+"THARAVAD BEACH":{egg:5,chicken:5,banana:5,shawarma:5,cream_bun:5},"MALABAR TEA TIME":{egg:20,chicken:10},
+"MUNCHICE CITY FLWR":{roll:10,shawarma:15,cutlet:10},"PARK VIEW":{egg:10},
+"SAFA BAKALA":{egg:5,roll:8,samosa:10},"THARAVAD BOOFIYA":{egg:15,banana:5,roll:15},
+"NILA BAKALA":{roll:5,shawarma:5},"KALPAKA":{egg:10,banana:10,cutlet:10,sweetna:10},
+"NESMA BOOFIYA":{egg:5,chicken:5,roll:5,shawarma:5,cutlet:5},"NESMA CAFETERIA":{egg:5,roll:5},
+"MEROCCO":{egg:5,roll:5,cutlet:5},"SHAMA AL RAZI":{egg:10,chicken:5,cutlet:5},
+"THAMIMI CAMP":{egg:5,chicken:5,roll:10,shawarma:10,cutlet:5},"RINU CAFETERIA":{egg:15,chicken:5,roll:10,shawarma:5,cutlet:5},
+"MALABAR THAMIMI":{egg:5,chicken:5},"TASTY":{egg:10,chicken:5,coconut:5},"UDDUPI":{egg:5},
+"ZAM ZAM":{roll:10,shawarma:10},"DOSHAAKADA":{egg:15,chicken:5,cutlet:10},"COFFEE":{egg:3,chicken:3,roll:5,shawarma:5},
+"LIVE CLT":{egg:5,veg:5,banana:5,roll:5,shawarma:5}
+};
+let customers = initialCustomers.map((name,i)=>({id:i+1,name,verified:false,quantities:{...(demoQuantities[name]||{})},changed:false}));
+customers[0].verified=true;
+let activeCategory="All";
+const categories=["All",...new Set(products.map(p=>p.category))];
+const $=id=>document.getElementById(id);
+const storeKey="bakery_erp_frontend_demo_v1";
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),2300)}
+function loadSaved(){try{const raw=localStorage.getItem(storeKey);if(raw){const data=JSON.parse(raw);if(data&&Array.isArray(data.customers)&&data.customers.length){customers=data.customers;}}}catch(e){}}
+function save(){try{localStorage.setItem(storeKey,JSON.stringify({customers,date:$("deliveryDate").value}));$("saveStatus").textContent="Saved in this browser · "+new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});}catch(e){$("saveStatus").textContent="Could not save locally";}}
+function visibleProducts(){return activeCategory==="All"?products:products.filter(p=>p.category===activeCategory)}
+function filteredCustomers(){const q=$("search").value.trim().toLowerCase(),status=$("statusFilter").value;return customers.filter(c=>(!q||c.name.toLowerCase().includes(q))&&(status==="all"||(status==="verified"&&c.verified)||(status==="unverified"&&!c.verified)))}
+function sumProduct(pid){return customers.reduce((sum,c)=>sum+(Number(c.quantities[pid])||0),0)}
+function renderTabs(){$("categoryTabs").innerHTML=categories.map(c=>`<button class="tab ${c===activeCategory?"active":""}" data-category="${c}">${c}</button>`).join("");$("categoryTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeCategory=b.dataset.category;renderTabs();render()})}
+function renderStats(){const total=customers.reduce((s,c)=>s+Object.values(c.quantities).reduce((a,v)=>a+(Number(v)||0),0),0);const verified=customers.filter(c=>c.verified).length;const active=products.filter(p=>sumProduct(p.id)>0).length;$("customerCount").textContent=customers.length;$("unitsTotal").textContent=total.toLocaleString();$("verifiedCount").textContent=`${verified} / ${customers.length}`;$("activeProducts").textContent=active}
+function renderGrid(){const ps=visibleProducts(),cs=filteredCustomers();let h='<table class="grid"><thead><tr><th>NO. / CUSTOMER</th>';ps.forEach(p=>h+=`<th>${p.name}</th>`);h+='<th>CHECKED</th></tr></thead><tbody>';
+cs.forEach((c,idx)=>{h+=`<tr><td><div class="custname"><span class="custnum">${idx+1}</span><span>${escapeHtml(c.name)}</span>${c.changed?'<span class="customer-state changed">CHANGED</span>':''}</div></td>`;ps.forEach(p=>{const val=Number(c.quantities[p.id])||0;h+=`<td><input class="qty" type="number" min="0" step="1" inputmode="numeric" aria-label="${escapeHtml(c.name)} ${escapeHtml(p.name)} quantity" data-customer="${c.id}" data-product="${p.id}" value="${val||""}" placeholder="—"></td>`});h+=`<td class="verify-cell"><button class="verify-btn ${c.verified?"checked":""}" data-verify="${c.id}" title="${c.verified?"Verified — click to unverify":"Mark checked"}">${c.verified?"✓ Verified":"○ Check"}</button></td></tr>`});
+h+='<tr class="total-row"><td>TOTAL QUANTITY</td>';ps.forEach(p=>h+=`<td data-total="${p.id}">${sumProduct(p.id).toLocaleString()}</td>`);h+='<td>—</td></tr></tbody></table>';
+$("gridMount").innerHTML=cs.length?h:'<div class="empty">No customers match your search.</div>';
+$("gridMount").querySelectorAll("input.qty").forEach(inp=>inp.addEventListener("change",()=>setQty(Number(inp.dataset.customer),inp.dataset.product,inp.value)));
+$("gridMount").querySelectorAll("input.qty").forEach(inp=>inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();const all=[...$("gridMount").querySelectorAll("input.qty")],i=all.indexOf(inp);if(all[i+1])all[i+1].focus()}}));
+$("gridMount").querySelectorAll("[data-verify]").forEach(btn=>btn.onclick=()=>toggleVerify(Number(btn.dataset.verify)));
+}
+function renderMobile(){const ps=visibleProducts(),cs=filteredCustomers();$("mobileMount").innerHTML=cs.map(c=>{const total=Object.values(c.quantities).reduce((s,v)=>s+(Number(v)||0),0);let cats=[...new Set(ps.map(p=>p.category))];return `<article class="customer-card"><div class="customer-card-head"><div class="name">${escapeHtml(c.name)}<div style="font-size:11px;color:var(--muted);font-weight:400">Order total: ${total}</div></div><button class="verify-btn ${c.verified?"checked":""}" data-verify="${c.id}">${c.verified?"✓ Verified":"○ Check"}</button></div><div class="customer-card-body">${cats.map(cat=>`<details class="category" ${cat===activeCategory||activeCategory==="All"?"open":""}><summary>${escapeHtml(cat)} <span>${ps.filter(p=>p.category===cat).reduce((s,p)=>s+(Number(c.quantities[p.id])||0),0)} units</span></summary>${ps.filter(p=>p.category===cat).map(p=>`<div class="product-entry"><span class="pname">${escapeHtml(p.name)}</span><div class="stepper"><button data-step="-1" data-customer="${c.id}" data-product="${p.id}" aria-label="Decrease ${p.name}">−</button><input type="number" min="0" step="1" inputmode="numeric" data-customer="${c.id}" data-product="${p.id}" value="${Number(c.quantities[p.id])||0}" aria-label="${p.name} quantity"><button data-step="1" data-customer="${c.id}" data-product="${p.id}" aria-label="Increase ${p.name}">+</button></div></div>`).join("")}</details>`).join("")}${c.changed?'<div class="card-total" style="color:var(--amber)">Quantity changed — verify again</div>':''}</div></article>`}).join("")||'<div class="empty">No customers match your search.</div>';
+$("mobileMount").querySelectorAll(".stepper input").forEach(inp=>inp.addEventListener("change",()=>setQty(Number(inp.dataset.customer),inp.dataset.product,inp.value)));
+$("mobileMount").querySelectorAll("[data-step]").forEach(btn=>btn.onclick=()=>{const c=customers.find(c=>c.id===Number(btn.dataset.customer));const v=(Number(c?.quantities[btn.dataset.product])||0)+Number(btn.dataset.step);setQty(Number(btn.dataset.customer),btn.dataset.product,Math.max(0,v))});
+$("mobileMount").querySelectorAll("[data-verify]").forEach(btn=>btn.onclick=()=>toggleVerify(Number(btn.dataset.verify)));
+}
+function setQty(cid,pid,raw){const c=customers.find(x=>x.id===cid);if(!c)return;let v=raw===""?0:Number(raw);if(!Number.isFinite(v)||v<0){toast("Quantity must be zero or greater");render();return}v=Math.floor(v);if(v===0)delete c.quantities[pid];else c.quantities[pid]=v;c.changed=true;c.verified=false;save();render()}
+function toggleVerify(cid){const c=customers.find(x=>x.id===cid);if(!c)return;if(c.verified){if(!confirm(`Unverify ${c.name}?`))return;c.verified=false;c.changed=true}else{c.verified=true;c.changed=false}save();render();toast(c.verified?"Order marked as checked":"Verification removed")}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){renderGrid();renderMobile();renderStats()}
+function addCustomer(){const name=prompt("Enter the wholesale customer name:");if(!name||!name.trim())return;const normalized=name.trim();if(customers.some(c=>c.name.toLowerCase()===normalized.toLowerCase())){toast("That customer already exists");return}customers.push({id:Math.max(0,...customers.map(c=>c.id))+1,name:normalized,verified:false,quantities:{},changed:false});save();render();toast("Customer added to this demo register")}
+function excelExport(){if(!window.XLSX){toast("Excel library did not load. Check internet and try again.");return}const date=$("deliveryDate").value||new Date().toISOString().slice(0,10);const ps=products;const rows=[["NO.","CUSTOMER",...ps.map(p=>p.name.toUpperCase()),"VERIFIED","STATUS"]];customers.forEach((c,i)=>{const row=[i+1,c.name,...ps.map(p=>Number(c.quantities[p.id])||0),c.verified?"YES":"NO",c.changed?"CHANGED":(c.verified?"CHECKED":"PENDING")];rows.push(row)});rows.push(["","TOTAL",...ps.map(p=>sumProduct(p.id)),"",""]);const ws=XLSX.utils.aoa_to_sheet(rows);ws["!cols"]=[{wch:6},{wch:25},...ps.map(()=>({wch:13})),{wch:12},{wch:14}];ws["!freeze"]={xSplit:2,ySplit:1};ws["!autofilter"]={ref:`A1:${XLSX.utils.encode_col(rows[0].length-1)}${customers.length+1}`};const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Daily Orders");const meta=[["Bakery ERP — Daily Order Register"],["Delivery date",date],["Exported at",new Date().toLocaleString()],["Note","Quantities are entered by staff; verify against the daily register."]];XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(meta),"Export Info");const filename=`bakery-orders-${date}.xlsx`;XLSX.writeFile(wb,filename);toast("Excel file downloaded")}
+$("addCustomerBtn").onclick=addCustomer;
+$("resetBtn").onclick=()=>{if(!confirm("Reset demo data and discard browser-saved changes?"))return;localStorage.removeItem(storeKey);customers=initialCustomers.map((name,i)=>({id:i+1,name,verified:false,quantities:{...(demoQuantities[name]||{})},changed:false}));customers[0].verified=true;save();render();toast("Demo reset")};
+$("exportBtn").onclick=excelExport;
+$("search").addEventListener("input",render);
+$("statusFilter").addEventListener("change",render);
+$("deliveryDate").addEventListener("change",()=>{save();toast("Demo date updated. Date-specific records require backend integration.")});
+loadSaved();renderTabs();render();if(!localStorage.getItem(storeKey))save();
+</script>
+</body>
+</html>
